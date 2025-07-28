@@ -10,10 +10,10 @@ A minimal grayscale colorscheme for Neovim that supports both light and dark mod
 - LSP diagnostics support
 - Extensive plugin support:
   - File explorers: NvimTree, NeoTree
-  - Completion: nvim-cmp
+  - Completion: nvim-cmp, blink.cmp
   - Search: Telescope
   - Git: GitSigns, Diffview
-  - UI: Bufferline, Noice, Notify, WhichKey
+  - UI: Bufferline, lualine, Noice, Notify, WhichKey
   - Utilities: Lazy, Mason, Trouble, TodoComments
   - Navigation: Flash, Hop
   - Start screens: Alpha, Dashboard
@@ -70,6 +70,18 @@ The theme automatically respects your `background` setting:
 ```vim
 set background=dark  " Use dark mode
 set background=light " Use light mode
+```
+
+### Lualine Configuration
+
+To use the achroma theme with lualine:
+
+```lua
+require('lualine').setup {
+  options = {
+    theme = 'achroma'
+  }
+}
 ```
 
 ## License

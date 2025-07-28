@@ -397,6 +397,66 @@ function achroma.setup(opts)
   h.DiffviewFolderSign = { fg = p.syntax3 }
   h.DiffviewStatusLine = { fg = p.fg, bg = p.bg_statusline }
 
+  -- Lualine
+  h.lualine_a_normal = { fg = p.bg, bg = p.fg }
+  h.lualine_b_normal = { fg = p.fg, bg = p.bg_highlight }
+  h.lualine_c_normal = { fg = p.fg_dark, bg = p.bg_statusline }
+  h.lualine_a_insert = { fg = p.bg, bg = p.syntax1 }
+  h.lualine_b_insert = { fg = p.syntax1, bg = p.bg_highlight }
+  h.lualine_a_visual = { fg = p.bg, bg = p.syntax3 }
+  h.lualine_b_visual = { fg = p.syntax3, bg = p.bg_highlight }
+  h.lualine_a_replace = { fg = p.bg, bg = p.error }
+  h.lualine_b_replace = { fg = p.error, bg = p.bg_highlight }
+  h.lualine_a_command = { fg = p.bg, bg = p.syntax2 }
+  h.lualine_b_command = { fg = p.syntax2, bg = p.bg_highlight }
+  h.lualine_a_inactive = { fg = p.fg_dark, bg = p.bg_statusline }
+  h.lualine_b_inactive = { fg = p.fg_dark, bg = p.bg_statusline }
+  h.lualine_c_inactive = { fg = p.fg_dark, bg = p.bg_statusline }
+
+  -- Blink.cmp
+  h.BlinkCmpMenu = { fg = p.fg, bg = p.bg_popup }
+  h.BlinkCmpMenuBorder = { fg = p.border, bg = p.bg_popup }
+  h.BlinkCmpMenuSelection = { fg = p.fg, bg = p.bg_highlight }
+  h.BlinkCmpLabel = { fg = p.fg }
+  h.BlinkCmpLabelDeprecated = { fg = p.comment, strikethrough = true }
+  h.BlinkCmpLabelMatch = { fg = p.syntax3, bold = true }
+  h.BlinkCmpLabelDetail = { fg = p.comment }
+  h.BlinkCmpLabelDescription = { fg = p.fg_dark }
+  h.BlinkCmpKind = { fg = p.syntax2 }
+  h.BlinkCmpKindText = { fg = p.fg_dark }
+  h.BlinkCmpKindMethod = { fg = p.syntax3 }
+  h.BlinkCmpKindFunction = { fg = p.syntax3 }
+  h.BlinkCmpKindConstructor = { fg = p.syntax2 }
+  h.BlinkCmpKindField = { fg = p.fg_dark }
+  h.BlinkCmpKindVariable = { fg = p.fg }
+  h.BlinkCmpKindClass = { fg = p.syntax2 }
+  h.BlinkCmpKindInterface = { fg = p.syntax2 }
+  h.BlinkCmpKindModule = { fg = p.syntax2 }
+  h.BlinkCmpKindProperty = { fg = p.fg_dark }
+  h.BlinkCmpKindUnit = { fg = p.syntax1 }
+  h.BlinkCmpKindValue = { fg = p.syntax1 }
+  h.BlinkCmpKindEnum = { fg = p.syntax1 }
+  h.BlinkCmpKindKeyword = { fg = p.syntax2 }
+  h.BlinkCmpKindSnippet = { fg = p.syntax3 }
+  h.BlinkCmpKindColor = { fg = p.syntax1 }
+  h.BlinkCmpKindFile = { fg = p.fg }
+  h.BlinkCmpKindReference = { fg = p.fg_dark }
+  h.BlinkCmpKindFolder = { fg = p.syntax3 }
+  h.BlinkCmpKindEnumMember = { fg = p.syntax1 }
+  h.BlinkCmpKindConstant = { fg = p.syntax1 }
+  h.BlinkCmpKindStruct = { fg = p.syntax2 }
+  h.BlinkCmpKindEvent = { fg = p.syntax3 }
+  h.BlinkCmpKindOperator = { fg = p.fg }
+  h.BlinkCmpKindTypeParameter = { fg = p.syntax2 }
+  h.BlinkCmpSource = { fg = p.comment }
+  h.BlinkCmpGhostText = { fg = p.comment }
+  h.BlinkCmpDoc = { fg = p.fg, bg = p.bg_popup }
+  h.BlinkCmpDocBorder = { fg = p.border, bg = p.bg_popup }
+  h.BlinkCmpDocCursorLine = { bg = p.bg_highlight }
+  h.BlinkCmpSignatureHelp = { fg = p.fg, bg = p.bg_popup }
+  h.BlinkCmpSignatureHelpBorder = { fg = p.border, bg = p.bg_popup }
+  h.BlinkCmpSignatureHelpActiveParameter = { fg = p.syntax3, bold = true }
+
   vim.cmd.highlight("clear")
   if vim.fn.exists("syntax_on") then
     vim.cmd("syntax reset")
