@@ -25,7 +25,7 @@ A minimal grayscale colorscheme for Neovim that supports both light and dark mod
 
 ```lua
 {
-  "brayden/achroma.nvim",
+  "binbandit/achroma.nvim",
   lazy = false,
   priority = 1000,
   config = function()
@@ -38,7 +38,7 @@ A minimal grayscale colorscheme for Neovim that supports both light and dark mod
 
 ```lua
 use {
-  "brayden/achroma.nvim",
+  "binbandit/achroma.nvim",
   config = function()
     vim.cmd([[colorscheme achroma]])
   end
