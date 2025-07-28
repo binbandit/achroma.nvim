@@ -303,6 +303,100 @@ function achroma.setup(opts)
   h.DashboardHeader = { fg = p.syntax2 }
   h.DashboardFooter = { fg = p.syntax3 }
 
+  -- IndentBlankline
+  h.IndentBlanklineChar = { fg = p.fg_gutter, nocombine = true }
+  h.IndentBlanklineSpaceChar = { fg = p.fg_gutter, nocombine = true }
+  h.IndentBlanklineContextChar = { fg = p.syntax2, nocombine = true }
+  h.IndentBlanklineContextStart = { underline = true, sp = p.syntax2 }
+  h.IndentBlanklineIndent1 = { fg = grays.gray3, nocombine = true }
+  h.IndentBlanklineIndent2 = { fg = grays.gray4, nocombine = true }
+  h.IndentBlanklineIndent3 = { fg = grays.gray5, nocombine = true }
+  h.IndentBlanklineIndent4 = { fg = grays.gray6, nocombine = true }
+  h.IndentBlanklineIndent5 = { fg = grays.gray7, nocombine = true }
+  h.IndentBlanklineIndent6 = { fg = grays.gray8, nocombine = true }
+  h.IndentBlanklineIndent7 = { fg = grays.gray9, nocombine = true }
+  h.IndentBlanklineIndent8 = { fg = grays.gray10, nocombine = true }
+
+  -- NeoTree
+  h.NeoTreeNormal = { fg = p.fg, bg = p.bg }
+  h.NeoTreeNormalNC = { fg = p.fg, bg = p.bg }
+  h.NeoTreeDirectoryName = { fg = p.syntax3 }
+  h.NeoTreeDirectoryIcon = { fg = p.syntax3 }
+  h.NeoTreeFileName = { fg = p.fg }
+  h.NeoTreeIndentMarker = { fg = p.fg_gutter }
+  h.NeoTreeExpander = { fg = p.fg_gutter }
+  h.NeoTreeModified = { fg = p.warning }
+  h.NeoTreeGitAdded = { fg = p.syntax1 }
+  h.NeoTreeGitDeleted = { fg = p.error }
+  h.NeoTreeGitModified = { fg = p.warning }
+
+  -- Bufferline
+  h.BufferLineFill = { bg = p.bg }
+  h.BufferLineBackground = { fg = p.fg_dark, bg = p.bg_highlight }
+  h.BufferLineBufferVisible = { fg = p.fg, bg = p.bg }
+  h.BufferLineBufferSelected = { fg = p.fg, bg = p.bg, bold = true }
+  h.BufferLineTabSelected = { fg = p.fg, bg = p.bg }
+  h.BufferLineTabClose = { fg = p.error, bg = p.bg_highlight }
+  h.BufferLineIndicatorSelected = { fg = p.bg, bg = p.bg }
+  h.BufferLineCloseButtonSelected = { fg = p.error, bg = p.bg }
+  h.BufferLineModifiedSelected = { fg = p.warning, bg = p.bg }
+  h.BufferLineError = { fg = p.error, bg = p.bg_highlight }
+  h.BufferLineWarning = { fg = p.warning, bg = p.bg_highlight }
+
+  -- TodoComments
+  h.TodoBgTODO = { fg = p.bg, bg = p.info, bold = true }
+  h.TodoFgTODO = { fg = p.info }
+  h.TodoSignTODO = { fg = p.info }
+  h.TodoBgWARN = { fg = p.bg, bg = p.warning, bold = true }
+  h.TodoFgWARN = { fg = p.warning }
+  h.TodoSignWARN = { fg = p.warning }
+  h.TodoBgERROR = { fg = p.bg, bg = p.error, bold = true }
+  h.TodoFgERROR = { fg = p.error }
+  h.TodoSignERROR = { fg = p.error }
+  h.TodoBgNOTE = { fg = p.bg, bg = p.hint, bold = true }
+  h.TodoFgNOTE = { fg = p.hint }
+  h.TodoSignNOTE = { fg = p.hint }
+  h.TodoBgPERF = { fg = p.bg, bg = p.syntax3, bold = true }
+  h.TodoFgPERF = { fg = p.syntax3 }
+  h.TodoSignPERF = { fg = p.syntax3 }
+  h.TodoBgHACK = { fg = p.bg, bg = p.syntax2, bold = true }
+  h.TodoFgHACK = { fg = p.syntax2 }
+  h.TodoSignHACK = { fg = p.syntax2 }
+  h.TodoBgFIX = { fg = p.bg, bg = p.error, bold = true }
+  h.TodoFgFIX = { fg = p.error }
+  h.TodoSignFIX = { fg = p.error }
+
+  -- Flash
+  h.FlashBackdrop = { fg = p.fg_gutter }
+  h.FlashMatch = { fg = p.fg, bg = p.bg_highlight }
+  h.FlashCurrent = { fg = p.fg, bg = p.syntax1 }
+  h.FlashLabel = { fg = p.bg, bg = p.syntax2, bold = true }
+  h.FlashPrompt = { fg = p.fg, bg = p.bg_popup }
+
+  -- Alpha
+  h.AlphaHeader = { fg = p.syntax2 }
+  h.AlphaButtons = { fg = p.syntax3 }
+  h.AlphaFooter = { fg = p.comment }
+  h.AlphaShortcut = { fg = p.syntax1 }
+
+  -- Hop
+  h.HopNextKey = { fg = p.syntax2, bold = true }
+  h.HopNextKey1 = { fg = p.syntax3, bold = true }
+  h.HopNextKey2 = { fg = p.syntax1 }
+  h.HopUnmatched = { fg = p.comment }
+
+  -- Diffview
+  h.DiffviewNormal = { fg = p.fg, bg = p.bg }
+  h.DiffviewCursorLine = { bg = p.bg_highlight }
+  h.DiffviewFilePanelInsertion = { fg = p.syntax1 }
+  h.DiffviewFilePanelDeletion = { fg = p.error }
+  h.DiffviewFilePanelSelected = { fg = p.fg, bold = true }
+  h.DiffviewFilePanelFileName = { fg = p.fg }
+  h.DiffviewFilePanelTitle = { fg = p.syntax2, bold = true }
+  h.DiffviewFilePanelCounter = { fg = p.syntax1, bold = true }
+  h.DiffviewFolderSign = { fg = p.syntax3 }
+  h.DiffviewStatusLine = { fg = p.fg, bg = p.bg_statusline }
+
   vim.cmd.highlight("clear")
   if vim.fn.exists("syntax_on") then
     vim.cmd("syntax reset")

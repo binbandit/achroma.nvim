@@ -8,7 +8,16 @@ A minimal grayscale colorscheme for Neovim that supports both light and dark mod
 - Support for dark and light modes
 - Full support for Tree-sitter highlighting
 - LSP diagnostics support
-- Popular plugin support (Telescope, nvim-tree, nvim-cmp, GitSigns, etc.)
+- Extensive plugin support:
+  - File explorers: NvimTree, NeoTree
+  - Completion: nvim-cmp
+  - Search: Telescope
+  - Git: GitSigns, Diffview
+  - UI: Bufferline, Noice, Notify, WhichKey
+  - Utilities: Lazy, Mason, Trouble, TodoComments
+  - Navigation: Flash, Hop
+  - Start screens: Alpha, Dashboard
+  - Indentation: IndentBlankline
 
 ## Installation
 
