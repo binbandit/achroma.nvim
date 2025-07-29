@@ -21,6 +21,7 @@ function achroma.setup(opts)
   opts = opts or {}
   local mode = opts.mode or "dark"
   local variant = opts.variant or "default"
+  local transparent = opts.transparent or false
   local p = {}
 
   if mode == "dark" then
@@ -59,6 +60,13 @@ function achroma.setup(opts)
     p.info = grays.gray4
     p.hint = grays.gray3
     p.none = "NONE"
+  end
+
+  -- Apply transparent background if requested
+  if transparent then
+    p.bg = "NONE"
+    p.bg_popup = "NONE"
+    p.bg_statusline = "NONE"
   end
 
   local h = {}
@@ -458,6 +466,211 @@ function achroma.setup(opts)
   h.BlinkCmpSignatureHelp = { fg = p.fg, bg = p.bg_popup }
   h.BlinkCmpSignatureHelpBorder = { fg = p.border, bg = p.bg_popup }
   h.BlinkCmpSignatureHelpActiveParameter = { fg = p.syntax3, bold = true }
+
+  -- mini.nvim suite
+  h.MiniCompletionActiveParameter = { underline = true }
+  h.MiniCursorword = { bg = p.bg_highlight }
+  h.MiniCursorwordCurrent = { bg = p.bg_highlight }
+  h.MiniIndentscopeSymbol = { fg = p.fg_gutter }
+  h.MiniIndentscopePrefix = { nocombine = true }
+  h.MiniJump = { fg = p.bg, bg = p.syntax2 }
+  h.MiniJump2dSpot = { fg = p.syntax2, bold = true }
+  h.MiniStarterCurrent = { nocombine = true }
+  h.MiniStarterFooter = { fg = p.comment }
+  h.MiniStarterHeader = { fg = p.syntax2 }
+  h.MiniStarterInactive = { fg = p.comment }
+  h.MiniStarterItem = { fg = p.fg, bg = p.bg }
+  h.MiniStarterItemBullet = { fg = p.syntax2 }
+  h.MiniStarterItemPrefix = { fg = p.warning }
+  h.MiniStarterSection = { fg = p.syntax3 }
+  h.MiniStarterQuery = { fg = p.info }
+  h.MiniStatuslineDevinfo = { fg = p.fg_dark, bg = p.bg_statusline }
+  h.MiniStatuslineFileinfo = { fg = p.fg_dark, bg = p.bg_statusline }
+  h.MiniStatuslineFilename = { fg = p.fg_dark, bg = p.bg_statusline }
+  h.MiniStatuslineInactive = { fg = p.comment, bg = p.bg_statusline }
+  h.MiniStatuslineModeCommand = { fg = p.bg, bg = p.syntax2, bold = true }
+  h.MiniStatuslineModeInsert = { fg = p.bg, bg = p.syntax1, bold = true }
+  h.MiniStatuslineModeNormal = { fg = p.bg, bg = p.fg, bold = true }
+  h.MiniStatuslineModeOther = { fg = p.bg, bg = p.comment, bold = true }
+  h.MiniStatuslineModeReplace = { fg = p.bg, bg = p.error, bold = true }
+  h.MiniStatuslineModeVisual = { fg = p.bg, bg = p.syntax3, bold = true }
+  h.MiniSurround = { bg = p.warning }
+  h.MiniTablineCurrent = { fg = p.fg, bg = p.bg }
+  h.MiniTablineFill = { bg = p.bg }
+  h.MiniTablineHidden = { fg = p.fg_dark, bg = p.bg_statusline }
+  h.MiniTablineModifiedCurrent = { fg = p.warning, bg = p.bg }
+  h.MiniTablineModifiedHidden = { fg = p.warning, bg = p.bg_statusline }
+  h.MiniTablineModifiedVisible = { fg = p.warning, bg = p.bg_statusline }
+  h.MiniTablineTabpagesection = { bg = p.bg_statusline }
+  h.MiniTablineVisible = { fg = p.fg, bg = p.bg_statusline }
+  h.MiniTestEmphasis = { bold = true }
+  h.MiniTestFail = { fg = p.error, bold = true }
+  h.MiniTestPass = { fg = p.syntax1, bold = true }
+  h.MiniTrailspace = { bg = p.error }
+
+  -- vim-illuminate
+  h.IlluminatedWordText = { bg = p.bg_highlight }
+  h.IlluminatedWordRead = { bg = p.bg_highlight }
+  h.IlluminatedWordWrite = { bg = p.bg_highlight }
+
+  -- indent-blankline.nvim v3
+  h.IblIndent = { fg = p.fg_gutter, nocombine = true }
+  h.IblScope = { fg = p.syntax2, nocombine = true }
+
+  -- nvim-navic
+  h.NavicIconsFile = { fg = p.fg }
+  h.NavicIconsModule = { fg = p.syntax2 }
+  h.NavicIconsNamespace = { fg = p.syntax3 }
+  h.NavicIconsPackage = { fg = p.fg }
+  h.NavicIconsClass = { fg = p.syntax2 }
+  h.NavicIconsMethod = { fg = p.syntax3 }
+  h.NavicIconsProperty = { fg = p.fg_dark }
+  h.NavicIconsField = { fg = p.fg_dark }
+  h.NavicIconsConstructor = { fg = p.syntax2 }
+  h.NavicIconsEnum = { fg = p.syntax1 }
+  h.NavicIconsInterface = { fg = p.syntax2 }
+  h.NavicIconsFunction = { fg = p.syntax3 }
+  h.NavicIconsVariable = { fg = p.fg }
+  h.NavicIconsConstant = { fg = p.syntax1 }
+  h.NavicIconsString = { fg = p.syntax1 }
+  h.NavicIconsNumber = { fg = p.syntax1 }
+  h.NavicIconsBoolean = { fg = p.syntax1 }
+  h.NavicIconsArray = { fg = p.fg }
+  h.NavicIconsObject = { fg = p.fg }
+  h.NavicIconsKey = { fg = p.syntax2 }
+  h.NavicIconsKeyword = { fg = p.syntax2 }
+  h.NavicIconsNull = { fg = p.syntax1 }
+  h.NavicIconsEnumMember = { fg = p.syntax1 }
+  h.NavicIconsStruct = { fg = p.syntax2 }
+  h.NavicIconsEvent = { fg = p.syntax3 }
+  h.NavicIconsOperator = { fg = p.fg }
+  h.NavicIconsTypeParameter = { fg = p.syntax2 }
+  h.NavicText = { fg = p.fg }
+  h.NavicSeparator = { fg = p.fg_dark }
+
+  -- aerial.nvim
+  h.AerialNormal = { fg = p.fg, bg = p.bg }
+  h.AerialGuide = { fg = p.fg_gutter }
+  h.AerialLine = { bg = p.bg_highlight }
+  h.AerialLineNC = { bg = p.bg_highlight }
+
+  -- nvim-dap
+  h.DapBreakpoint = { fg = p.error }
+  h.DapBreakpointCondition = { fg = p.warning }
+  h.DapBreakpointRejected = { fg = p.comment }
+  h.DapLogPoint = { fg = p.info }
+  h.DapStopped = { fg = p.syntax1 }
+
+  -- nvim-dap-ui
+  h.DapUIVariable = { fg = p.fg }
+  h.DapUIScope = { fg = p.syntax3 }
+  h.DapUIType = { fg = p.syntax2 }
+  h.DapUIValue = { fg = p.fg }
+  h.DapUIModifiedValue = { fg = p.syntax3, bold = true }
+  h.DapUIDecoration = { fg = p.syntax3 }
+  h.DapUIThread = { fg = p.syntax1 }
+  h.DapUIStoppedThread = { fg = p.syntax3 }
+  h.DapUIFrameName = { fg = p.fg }
+  h.DapUISource = { fg = p.syntax2 }
+  h.DapUILineNumber = { fg = p.syntax3 }
+  h.DapUIFloatBorder = { fg = p.border }
+  h.DapUIWatchesEmpty = { fg = p.error }
+  h.DapUIWatchesValue = { fg = p.syntax1 }
+  h.DapUIWatchesError = { fg = p.error }
+  h.DapUIBreakpointsPath = { fg = p.syntax3 }
+  h.DapUIBreakpointsInfo = { fg = p.syntax1 }
+  h.DapUIBreakpointsCurrentLine = { fg = p.syntax1, bold = true }
+  h.DapUIBreakpointsLine = { fg = p.fg }
+  h.DapUIBreakpointsDisabledLine = { fg = p.comment }
+
+  -- leap.nvim
+  h.LeapMatch = { fg = p.bg, bg = p.syntax2, bold = true }
+  h.LeapLabelPrimary = { fg = p.bg, bg = p.syntax2, bold = true }
+  h.LeapLabelSecondary = { fg = p.bg, bg = p.syntax3, bold = true }
+  h.LeapBackdrop = { fg = p.comment }
+
+  -- nvim-notify
+  h.NotifyERRORBorder = { fg = p.error }
+  h.NotifyWARNBorder = { fg = p.warning }
+  h.NotifyINFOBorder = { fg = p.info }
+  h.NotifyDEBUGBorder = { fg = p.comment }
+  h.NotifyTRACEBorder = { fg = p.syntax2 }
+  h.NotifyERRORIcon = { fg = p.error }
+  h.NotifyWARNIcon = { fg = p.warning }
+  h.NotifyINFOIcon = { fg = p.info }
+  h.NotifyDEBUGIcon = { fg = p.comment }
+  h.NotifyTRACEIcon = { fg = p.syntax2 }
+  h.NotifyERRORTitle = { fg = p.error }
+  h.NotifyWARNTitle = { fg = p.warning }
+  h.NotifyINFOTitle = { fg = p.info }
+  h.NotifyDEBUGTitle = { fg = p.comment }
+  h.NotifyTRACETitle = { fg = p.syntax2 }
+  h.NotifyERRORBody = { fg = p.fg }
+  h.NotifyWARNBody = { fg = p.fg }
+  h.NotifyINFOBody = { fg = p.fg }
+  h.NotifyDEBUGBody = { fg = p.fg }
+  h.NotifyTRACEBody = { fg = p.fg }
+
+  -- vim-matchup
+  h.MatchWord = { bg = p.bg_highlight, underline = true }
+  h.MatchParen = { bg = p.bg_highlight }
+  h.MatchWordCur = { bg = p.bg_highlight, underline = true }
+  h.MatchParenCur = { bg = p.bg_highlight, underline = true }
+
+  -- headlines.nvim
+  h.Headline1 = { bg = p.bg_highlight }
+  h.Headline2 = { bg = p.bg_highlight }
+  h.Headline3 = { bg = p.bg_highlight }
+  h.CodeBlock = { bg = p.bg_highlight }
+  h.Dash = { fg = p.fg_gutter }
+
+  -- rainbow-delimiters.nvim
+  h.RainbowDelimiterRed = { fg = p.fg }
+  h.RainbowDelimiterYellow = { fg = p.fg_dark }
+  h.RainbowDelimiterBlue = { fg = p.syntax3 }
+  h.RainbowDelimiterOrange = { fg = p.syntax1 }
+  h.RainbowDelimiterGreen = { fg = p.syntax2 }
+  h.RainbowDelimiterViolet = { fg = p.comment }
+  h.RainbowDelimiterCyan = { fg = p.info }
+
+  -- LspSaga
+  h.SagaBorder = { fg = p.border }
+  h.SagaNormal = { fg = p.fg, bg = p.bg_popup }
+  h.SagaExpanded = { fg = p.syntax3 }
+  h.SagaCollapsed = { fg = p.syntax3 }
+  h.SagaBeacon = { bg = p.syntax2 }
+  h.ActionPreviewTitle = { fg = p.syntax2, bg = p.bg_popup }
+  h.CodeActionText = { fg = p.fg }
+  h.CodeActionNumber = { fg = p.syntax1 }
+  h.FinderSelection = { fg = p.syntax3, bg = p.bg_highlight }
+  h.FinderFileName = { fg = p.fg }
+  h.FinderCount = { fg = p.comment }
+  h.FinderIcon = { fg = p.syntax2 }
+  h.FinderType = { fg = p.syntax2 }
+  h.FinderSpinnerTitle = { fg = p.syntax2, bold = true }
+  h.FinderSpinner = { fg = p.syntax2, bold = true }
+  h.DefinitionIcon = { fg = p.syntax3 }
+  h.DefinitionPreviewTitle = { fg = p.syntax2, bold = true }
+  h.HoverNormal = { fg = p.fg, bg = p.bg_popup }
+  h.HoverBorder = { fg = p.border, bg = p.bg_popup }
+  h.RenameBorder = { fg = p.border }
+  h.RenameNormal = { fg = p.fg, bg = p.bg_popup }
+  h.DiagnosticBorder = { fg = p.border }
+  h.DiagnosticSource = { fg = p.comment }
+  h.DiagnosticNormal = { fg = p.fg, bg = p.bg_popup }
+  h.DiagnosticErrorTitle = { fg = p.error }
+  h.DiagnosticWarnTitle = { fg = p.warning }
+  h.DiagnosticInfoTitle = { fg = p.info }
+  h.DiagnosticHintTitle = { fg = p.hint }
+  h.DiagnosticPos = { fg = p.comment }
+  h.LspSagaCodeActionTitle = { fg = p.syntax2 }
+  h.LspSagaCodeActionBorder = { fg = p.border }
+  h.LspSagaCodeActionContent = { fg = p.fg }
+  h.LspSagaLspFinderBorder = { fg = p.border }
+  h.LspSagaAutoPreview = { fg = p.syntax3 }
+  h.LspSagaFinderSelection = { fg = p.syntax3, bg = p.bg_highlight }
+  h.LspFloatWinNormal = { bg = p.bg_popup }
+  h.LspFloatWinBorder = { fg = p.border }
 
   vim.cmd.highlight("clear")
   if vim.fn.exists("syntax_on") then

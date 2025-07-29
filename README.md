@@ -40,18 +40,21 @@ colorscheme achroma
 ### Commands
 
 ```vim
-:Achroma dark        " Dark mode
-:Achroma light       " Light mode
-:Achroma black       " Pure black background (dark mode)
-:Achroma dark black  " Explicit dark mode with black background
+:Achroma dark              " Dark mode
+:Achroma light             " Light mode
+:Achroma black             " Pure black background (dark mode)
+:Achroma transparent       " Transparent background
+:Achroma dark black        " Dark mode with black background
+:Achroma dark transparent  " Dark mode with transparent background
 ```
 
 ### Configuration
 
 ```lua
 require('achroma').setup({
-  mode = 'dark',     -- 'dark' or 'light'
-  variant = 'black'  -- 'default' or 'black' (dark mode only)
+  mode = 'dark',       -- 'dark' or 'light'
+  variant = 'black',   -- 'default' or 'black' (dark mode only)
+  transparent = false  -- true for transparent background
 })
 ```
 
@@ -77,6 +80,7 @@ require('lualine').setup {
 - Pure grayscale palette - no color distractions
 - Dark and light mode support
 - Pure black variant for OLED displays
+- Transparent background support
 - WCAG compliant contrast ratios
 - Full Tree-sitter support
 - LSP diagnostics styling
@@ -85,15 +89,19 @@ require('lualine').setup {
 
 The theme includes highlight groups for:
 
-**File Management**: NvimTree, NeoTree  
-**Completion**: nvim-cmp, blink.cmp  
+**File Management**: NvimTree, NeoTree, aerial.nvim  
+**Completion**: nvim-cmp, blink.cmp, mini.completion  
 **Search**: Telescope  
 **Git Integration**: GitSigns, Diffview  
-**UI Enhancement**: Bufferline, lualine, Noice, Notify, WhichKey  
-**Development Tools**: Lazy, Mason, Trouble, TodoComments  
-**Navigation**: Flash, Hop  
-**Startup**: Alpha, Dashboard  
-**Indentation**: IndentBlankline
+**UI Enhancement**: Bufferline, lualine, Noice, Notify, WhichKey, mini.statusline, mini.tabline  
+**Development Tools**: Lazy, Mason, Trouble, TodoComments, nvim-dap, nvim-dap-ui  
+**Navigation**: Flash, Hop, leap.nvim, mini.jump, vim-illuminate, vim-matchup  
+**Startup**: Alpha, Dashboard, mini.starter  
+**Indentation**: IndentBlankline, indent-blankline.nvim v3, mini.indentscope  
+**Breadcrumbs**: nvim-navic  
+**Syntax**: rainbow-delimiters.nvim, headlines.nvim  
+**LSP Enhancement**: LspSaga  
+**Testing**: mini.test
 
 ## Philosophy
 
