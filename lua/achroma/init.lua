@@ -379,6 +379,12 @@ function achroma.setup(opts)
   h.BufferLineError = { fg = p.error, bg = p.bg_highlight }
   h.BufferLineWarning = { fg = p.warning, bg = p.bg_highlight }
 
+  -- Barbar
+  h.BarbarBufferVisible = { fg = p.fg, bg = p.bg_highlight }
+  h.BarbarBufferCurrent = { fg = p.fg, bg = p.bg, bold = true }
+  h.BarbarBufferInactive = { fg = p.fg_dark, bg = p.bg_statusline }
+  h.BarbarBufferTab = { fg = p.fg_gutter, bg = p.bg }
+
   -- TodoComments
   h.TodoBgTODO = { fg = p.bg, bg = p.info, bold = true }
   h.TodoFgTODO = { fg = p.info }
@@ -448,6 +454,16 @@ function achroma.setup(opts)
   h.lualine_a_inactive = { fg = p.fg_dark, bg = p.bg_statusline }
   h.lualine_b_inactive = { fg = p.fg_dark, bg = p.bg_statusline }
   h.lualine_c_inactive = { fg = p.fg_dark, bg = p.bg_statusline }
+  
+  -- Additional Lualine groups
+  h.LualineNormalA = { fg = p.bg, bg = p.syntax2, bold = true }
+  h.LualineNormalB = { fg = p.fg, bg = p.bg_statusline }
+  h.LualineNormalC = { fg = p.fg_dark, bg = p.bg }
+  h.LualineInsertA = { fg = p.bg, bg = p.syntax1, bold = true }
+  h.LualineVisualA = { fg = p.bg, bg = p.syntax3, bold = true }
+  h.LualineReplaceA = { fg = p.bg, bg = p.error, bold = true }
+  h.LualineCommandA = { fg = p.bg, bg = p.warning, bold = true }
+  h.LualineInactiveA = { fg = p.fg_gutter, bg = p.bg_highlight }
 
   -- Blink.cmp
   h.BlinkCmpMenu = { fg = p.fg, bg = p.bg_popup }

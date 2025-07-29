@@ -118,7 +118,7 @@ The theme includes highlight groups for:
 **Completion**: nvim-cmp, blink.cmp, mini.completion  
 **Search**: Telescope  
 **Git Integration**: GitSigns, Diffview  
-**UI Enhancement**: Bufferline, lualine, Noice, Notify, WhichKey, mini.statusline, mini.tabline  
+**UI Enhancement**: Bufferline, barbar.nvim, lualine, Noice, Notify, WhichKey, mini.statusline, mini.tabline  
 **Development Tools**: Lazy, Mason, Trouble, TodoComments, nvim-dap, nvim-dap-ui  
 **Navigation**: Flash, Hop, leap.nvim, mini.jump, vim-illuminate, vim-matchup  
 **Startup**: Alpha, Dashboard, mini.starter  
