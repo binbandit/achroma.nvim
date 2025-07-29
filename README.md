@@ -40,12 +40,15 @@ colorscheme achroma
 Or with Lua configuration:
 ```lua
 require('achroma').setup({
-  mode = 'dark',         -- 'dark' or 'light'
-  variant = 'default',   -- 'default' or 'black' (dark mode only)
-  transparent = false,   -- true for transparent background
-  pop = false,           -- true for subtle color accents
-  inverse_popup = false, -- true for high contrast popup menus
-  auto_dark_light = false -- true to follow system dark/light mode
+  mode = 'dark',           -- 'dark' or 'light'
+  variant = 'default',     -- 'default' or 'black' (dark mode only)
+  transparent = false,     -- true for transparent background
+  pop = false,             -- true for subtle color accents
+  inverse_popup = false,   -- true for high contrast popup menus
+  auto_dark_light = false, -- true to follow system dark/light mode
+  adaptive_contrast = false, -- true to adjust contrast based on time of day
+  git_gutter_colors = false, -- true for colored git gutter symbols
+  highlight_scope = false    -- true to highlight current scope
 })
 ```
 
@@ -68,7 +71,16 @@ require('achroma').setup({
   variant = 'black',      -- 'default' or 'black' (dark mode only)
   transparent = false,    -- true for transparent background
   inverse_popup = false,  -- true for high contrast popup menus
-  auto_dark_light = false -- true to follow system dark/light mode
+  auto_dark_light = false, -- true to follow system dark/light mode
+  adaptive_contrast = false, -- true to adjust contrast based on time
+  contrast_schedule = {      -- customize time-based contrast
+    morning = "normal",      -- 6am-12pm
+    afternoon = "high",      -- 12pm-6pm  
+    evening = "soft",        -- 6pm-10pm
+    night = "ultra_soft"     -- 10pm-6am
+  },
+  git_gutter_colors = false, -- true for colored git symbols
+  highlight_scope = false    -- true to highlight current scope
 })
 ```
 
@@ -82,6 +94,21 @@ require('achroma').setup({
 - Follows Neovim's `background` option
 - Works with plugins that detect system theme (e.g., [auto-dark-mode.nvim](https://github.com/f-person/auto-dark-mode.nvim))
 - Preserves other settings when switching modes
+
+**`adaptive_contrast`**: Smart contrast that adjusts based on time of day
+- Reduces eye strain by matching ambient light conditions
+- High contrast during bright afternoons
+- Softer contrast for evening and late-night coding
+- Fully customizable schedule
+
+**`git_gutter_colors`**: Adds color to git gutter symbols
+- Green for additions, blue for changes, red for deletions
+- Helps quickly identify git changes while maintaining grayscale theme
+
+**`highlight_scope`**: Subtly highlights current scope
+- Shows current function/block context
+- Helps maintain code location awareness
+- Works with vim-illuminate and treesitter-context
 
 The theme respects your existing `background` setting:
 ```vim
@@ -131,6 +158,16 @@ The theme includes highlight groups for:
 ## Philosophy
 
 Achroma removes color as a distraction, using only shades of gray to create visual hierarchy. This approach reduces cognitive load and helps maintain focus on the code structure rather than syntax highlighting.
+
+## Colorblind-Friendly Design
+
+Achroma is the first truly colorblind-friendly Neovim theme. By using only grayscale:
+- **100% accessible** to all types of color vision deficiency
+- **No color confusion** between error, warning, and info highlights
+- **Consistent experience** for all developers regardless of color perception
+- **Pattern-based differentiation** using underlines, bold, and italic styles
+
+Perfect for teams with diverse visual needs or developers who want to ensure their code is readable by everyone.
 
 ## Accessibility
 

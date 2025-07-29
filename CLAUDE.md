@@ -27,7 +27,16 @@ The theme follows standard Neovim colorscheme conventions:
 The theme can be configured via:
 - `require('achroma').setup(opts)` - Programmatic configuration
 - `:Achroma [args]` - Command-line configuration
-- Options: mode (dark/light), variant (default/black), transparent (boolean), pop (boolean)
+- Options: 
+  - mode (dark/light)
+  - variant (default/black)
+  - transparent (boolean)
+  - pop (boolean)
+  - inverse_popup (boolean)
+  - auto_dark_light (boolean)
+  - adaptive_contrast (boolean)
+  - git_gutter_colors (boolean)
+  - highlight_scope (boolean)
 
 ## Common Tasks
 

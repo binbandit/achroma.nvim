@@ -35,18 +35,60 @@ function achroma.setup(opts)
   local pop = opts.pop or false
   local inverse_popup = opts.inverse_popup or false
   local auto_dark_light = opts.auto_dark_light or false
+  local adaptive_contrast = opts.adaptive_contrast or false
+  local contrast_schedule = opts.contrast_schedule or {
+    morning = "normal",
+    afternoon = "high",
+    evening = "soft",
+    night = "ultra_soft"
+  }
+  local git_gutter_colors = opts.git_gutter_colors or false
+  local highlight_scope = opts.highlight_scope or false
   local p = {}
+  
+  -- Get current hour for adaptive contrast
+  local current_hour = tonumber(os.date("%H"))
+  local contrast_mode = "normal"
+  
+  if adaptive_contrast then
+    if current_hour >= 6 and current_hour < 12 then
+      contrast_mode = contrast_schedule.morning
+    elseif current_hour >= 12 and current_hour < 18 then
+      contrast_mode = contrast_schedule.afternoon
+    elseif current_hour >= 18 and current_hour < 22 then
+      contrast_mode = contrast_schedule.evening
+    else
+      contrast_mode = contrast_schedule.night
+    end
+  end
 
   if mode == "dark" then
     p.bg = variant == "black" and grays.black or grays.gray1
     p.bg_highlight = variant == "black" and grays.gray1 or grays.gray2
     p.bg_popup = variant == "black" and grays.black or grays.gray0
     p.bg_statusline = variant == "black" and grays.gray1 or grays.gray2
-    p.fg = grays.gray11
-    p.fg_dark = grays.gray9
+    
+    -- Adjust contrast based on time of day
+    if contrast_mode == "high" then
+      p.fg = grays.gray12
+      p.fg_dark = grays.gray10
+      p.comment = grays.gray8
+    elseif contrast_mode == "soft" then
+      p.fg = grays.gray10
+      p.fg_dark = grays.gray8
+      p.comment = grays.gray6
+    elseif contrast_mode == "ultra_soft" then
+      p.fg = grays.gray9
+      p.fg_dark = grays.gray7
+      p.comment = grays.gray5
+    else -- normal
+      p.fg = grays.gray11
+      p.fg_dark = grays.gray9
+      p.comment = grays.gray7
+    end
+    
     p.fg_gutter = grays.gray6
     p.border = grays.gray3
-    p.comment = grays.gray7
     p.syntax1 = pop and pop_colors.green or grays.gray10 -- e.g., strings, numbers
     p.syntax2 = pop and pop_colors.purple or grays.gray12 -- e.g., keywords
     p.syntax3 = pop and pop_colors.blue or grays.gray8 -- e.g., functions
@@ -90,6 +132,15 @@ function achroma.setup(opts)
   h.CursorLine = { bg = p.bg_highlight }
   h.CursorColumn = { bg = p.bg_highlight }
   h.CursorLineNr = { fg = p.fg, bold = true }
+  
+  -- Highlight current scope if enabled
+  if highlight_scope then
+    h.IlluminatedWordText = { bg = mode == "dark" and grays.gray2 or grays.gray11 }
+    h.IlluminatedWordRead = { bg = mode == "dark" and grays.gray2 or grays.gray11 }
+    h.IlluminatedWordWrite = { bg = mode == "dark" and grays.gray2 or grays.gray11 }
+    h.TreesitterContext = { bg = mode == "dark" and grays.gray2 or grays.gray11 }
+    h.TreesitterContextLineNumber = { fg = p.fg, bg = mode == "dark" and grays.gray2 or grays.gray11 }
+  end
   h.LineNr = { fg = p.fg_gutter }
   h.SignColumn = { bg = p.bg }
   h.StatusLine = { fg = p.fg, bg = p.bg_statusline }
@@ -306,9 +357,15 @@ function achroma.setup(opts)
   h.CmpItemKindTypeParameter = { fg = p.syntax2 }
 
   -- GitSigns
-  h.GitSignsAdd = { fg = p.syntax1 }
-  h.GitSignsChange = { fg = p.syntax3 }
-  h.GitSignsDelete = { fg = p.error }
+  if git_gutter_colors then
+    h.GitSignsAdd = { fg = pop_colors.green or "#9ece6a" }
+    h.GitSignsChange = { fg = pop_colors.blue or "#7aa2f7" }
+    h.GitSignsDelete = { fg = pop_colors.red or "#f7768e" }
+  else
+    h.GitSignsAdd = { fg = p.syntax1 }
+    h.GitSignsChange = { fg = p.syntax3 }
+    h.GitSignsDelete = { fg = p.error }
+  end
 
   -- Trouble
   h.TroubleNormal = { fg = p.fg, bg = p.bg }
@@ -558,10 +615,12 @@ function achroma.setup(opts)
   h.MiniTestPass = { fg = p.syntax1, bold = true }
   h.MiniTrailspace = { bg = p.error }
 
-  -- vim-illuminate
-  h.IlluminatedWordText = { bg = p.bg_highlight }
-  h.IlluminatedWordRead = { bg = p.bg_highlight }
-  h.IlluminatedWordWrite = { bg = p.bg_highlight }
+  -- vim-illuminate (override if highlight_scope is not set)
+  if not highlight_scope then
+    h.IlluminatedWordText = { bg = p.bg_highlight }
+    h.IlluminatedWordRead = { bg = p.bg_highlight }
+    h.IlluminatedWordWrite = { bg = p.bg_highlight }
+  end
 
   -- indent-blankline.nvim v3
   h.IblIndent = { fg = p.fg_gutter, nocombine = true }
