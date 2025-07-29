@@ -1,6 +1,7 @@
 local achroma = {}
 
 local grays = {
+  black = "#000000",
   gray0 = "#0d0d0d",
   gray1 = "#1e1e1e",
   gray2 = "#282828",
@@ -19,13 +20,14 @@ local grays = {
 function achroma.setup(opts)
   opts = opts or {}
   local mode = opts.mode or "dark"
+  local variant = opts.variant or "default"
   local p = {}
 
   if mode == "dark" then
-    p.bg = grays.gray1
-    p.bg_highlight = grays.gray2
-    p.bg_popup = grays.gray0
-    p.bg_statusline = grays.gray2
+    p.bg = variant == "black" and grays.black or grays.gray1
+    p.bg_highlight = variant == "black" and grays.gray1 or grays.gray2
+    p.bg_popup = variant == "black" and grays.black or grays.gray0
+    p.bg_statusline = variant == "black" and grays.gray1 or grays.gray2
     p.fg = grays.gray11
     p.fg_dark = grays.gray9
     p.fg_gutter = grays.gray6
@@ -79,12 +81,12 @@ function achroma.setup(opts)
   h.MoreMsg = { fg = p.syntax1, bold = true }
   h.NonText = { fg = p.fg_gutter }
   h.Question = { fg = p.warning }
-  h.Search = { fg = p.bg, bg = p.fg }
-  h.IncSearch = { fg = p.bg, bg = p.fg, bold = true }
-  h.Substitute = { fg = p.bg, bg = p.fg, bold = true }
+  h.Search = { fg = p.bg, bg = p.syntax3 }
+  h.IncSearch = { fg = p.bg, bg = p.syntax2, bold = true }
+  h.Substitute = { fg = p.bg, bg = p.syntax2, bold = true }
   h.SpecialKey = { fg = p.syntax2 }
   h.EndOfBuffer = { fg = p.bg }
-  h.Visual = { bg = p.bg_highlight }
+  h.Visual = { fg = p.fg, bg = p.border }
   h.WarningMsg = { fg = p.warning }
   h.ErrorMsg = { fg = p.error }
   h.Error = { fg = p.error }
@@ -462,6 +464,7 @@ function achroma.setup(opts)
     vim.cmd("syntax reset")
   end
   vim.g.colors_name = "achroma"
+  vim.g.achroma_variant = variant
 
   for group, settings in pairs(h) do
     vim.api.nvim_set_hl(0, group, settings)

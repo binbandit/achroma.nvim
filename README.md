@@ -6,8 +6,10 @@ A minimal grayscale colorscheme for Neovim that supports both light and dark mod
 
 - Pure grayscale palette with no color distractions
 - Support for dark and light modes
+- Pure black background variant for OLED displays
 - Full support for Tree-sitter highlighting
 - LSP diagnostics support
+- WCAG compliant color contrasts
 - Extensive plugin support:
   - File explorers: NvimTree, NeoTree
   - Completion: nvim-cmp, blink.cmp
@@ -54,6 +56,11 @@ colorscheme achroma
 " Or with a specific mode
 :Achroma dark
 :Achroma light
+
+" Use pure black background variant
+:Achroma black
+:Achroma dark black
+:Achroma light  " Light mode doesn't have black variant
 ```
 
 ### Configuration
@@ -61,7 +68,8 @@ colorscheme achroma
 ```lua
 -- Set up with options
 require('achroma').setup({
-  mode = 'dark' -- or 'light'
+  mode = 'dark',     -- 'dark' or 'light'
+  variant = 'black'  -- 'default' or 'black' (dark mode only)
 })
 ```
 

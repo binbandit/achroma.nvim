@@ -1,6 +1,7 @@
 -- Lualine theme for achroma.nvim
 
 local colors = {
+  black = "#000000",
   gray0 = "#0d0d0d",
   gray1 = "#1e1e1e",
   gray2 = "#282828",
@@ -18,14 +19,15 @@ local colors = {
 
 local achroma = {}
 
--- Determine colors based on background
+-- Determine colors based on background and variant
 local bg = vim.o.background
+local variant = vim.g.achroma_variant or "default"
 local c = {}
 
 if bg == "dark" then
-  c.bg = colors.gray1
-  c.bg_highlight = colors.gray2
-  c.bg_statusline = colors.gray2
+  c.bg = variant == "black" and colors.black or colors.gray1
+  c.bg_highlight = variant == "black" and colors.gray1 or colors.gray2
+  c.bg_statusline = variant == "black" and colors.gray1 or colors.gray2
   c.fg = colors.gray11
   c.fg_dark = colors.gray9
   c.syntax1 = colors.gray10
