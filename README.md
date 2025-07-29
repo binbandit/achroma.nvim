@@ -37,6 +37,16 @@ Basic usage:
 colorscheme achroma
 ```
 
+Or with Lua configuration:
+```lua
+require('achroma').setup({
+  mode = 'dark',       -- 'dark' or 'light'
+  variant = 'default', -- 'default' or 'black' (dark mode only)
+  transparent = false, -- true for transparent background
+  pop = false          -- true for subtle color accents
+})
+```
+
 ### Commands
 
 ```vim
@@ -106,6 +116,14 @@ The theme includes highlight groups for:
 ## Philosophy
 
 Achroma removes color as a distraction, using only shades of gray to create visual hierarchy. This approach reduces cognitive load and helps maintain focus on the code structure rather than syntax highlighting.
+
+## Accessibility
+
+All color combinations in achroma.nvim are designed to meet WCAG AA standards for contrast ratios:
+- Normal text: 7:1 minimum contrast ratio
+- Large text: 4.5:1 minimum contrast ratio
+- The lightest gray used for comments (#8f8f8f) against dark backgrounds meets AA standards
+- Error highlighting has been adjusted to #8f8f8f for improved visibility while maintaining the grayscale aesthetic
 
 ## Contributing
 

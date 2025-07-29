@@ -48,7 +48,7 @@ function achroma.setup(opts)
     p.syntax1 = pop and pop_colors.green or grays.gray10 -- e.g., strings, numbers
     p.syntax2 = pop and pop_colors.purple or grays.gray12 -- e.g., keywords
     p.syntax3 = pop and pop_colors.blue or grays.gray8 -- e.g., functions
-    p.error = pop and pop_colors.red or grays.gray7
+    p.error = pop and pop_colors.red or grays.gray8
     p.warning = pop and pop_colors.yellow or grays.gray8
     p.info = pop and pop_colors.green or grays.gray9
     p.hint = pop and pop_colors.cyan or grays.gray10
@@ -168,6 +168,7 @@ function achroma.setup(opts)
 
   -- Tree-sitter highlight groups
   h["@error"] = { fg = p.error }
+  h["@comment"] = { link = "Comment" }
   h["@punctuation.delimiter"] = { fg = p.fg_dark }
   h["@punctuation.bracket"] = { fg = p.fg_dark }
   h["@punctuation.special"] = { fg = p.syntax3 }
