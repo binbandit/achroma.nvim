@@ -43,7 +43,8 @@ require('achroma').setup({
   mode = 'dark',       -- 'dark' or 'light'
   variant = 'default', -- 'default' or 'black' (dark mode only)
   transparent = false, -- true for transparent background
-  pop = false          -- true for subtle color accents
+  pop = false,         -- true for subtle color accents
+  inverse_popup = false -- true for high contrast popup menus
 })
 ```
 
@@ -62,11 +63,16 @@ require('achroma').setup({
 
 ```lua
 require('achroma').setup({
-  mode = 'dark',       -- 'dark' or 'light'
-  variant = 'black',   -- 'default' or 'black' (dark mode only)
-  transparent = false  -- true for transparent background
+  mode = 'dark',        -- 'dark' or 'light'
+  variant = 'black',    -- 'default' or 'black' (dark mode only)
+  transparent = false,  -- true for transparent background
+  inverse_popup = false -- true for high contrast popup menus
 })
 ```
+
+The `inverse_popup` option provides high contrast selection in completion menus:
+- **Dark mode**: White background with black text for selected items
+- **Light mode**: Black background with white text for selected items
 
 The theme respects your existing `background` setting:
 ```vim
@@ -128,6 +134,41 @@ All color combinations in achroma.nvim are designed to meet WCAG AA standards fo
 ## Contributing
 
 Issues and pull requests are welcome. When contributing, please ensure all color combinations maintain WCAG AA compliance for accessibility.
+
+## Terminal Themes
+
+Achroma includes matching terminal color schemes for popular terminal emulators. Find them in the `terminals/` directory:
+
+### iTerm2
+1. Download `terminals/achroma-dark.itermcolors`
+2. Open iTerm2 Preferences → Profiles → Colors
+3. Click "Color Presets" → "Import" and select the file
+
+### WezTerm
+Add to your `wezterm.lua`:
+```lua
+local achroma = require("path/to/achroma.nvim/terminals/achroma")
+config.color_scheme = achroma.dark -- or achroma.black or achroma.light
+```
+
+### Ghostty
+Copy `terminals/achroma` to `~/.config/ghostty/themes/` and add to your config:
+```
+theme = achroma
+```
+
+### Alacritty
+Add the contents of `terminals/achroma.toml` to your `alacritty.toml` configuration.
+
+### Kitty
+Include in your `kitty.conf`:
+```
+include path/to/achroma.nvim/terminals/achroma.conf
+```
+
+### Windows Terminal
+1. Copy the contents of `terminals/achroma.json` (or `achroma-black.json`, `achroma-light.json`)
+2. Add to the `schemes` array in Windows Terminal settings
 
 ## License
 

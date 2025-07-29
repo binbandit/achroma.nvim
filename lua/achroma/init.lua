@@ -33,6 +33,7 @@ function achroma.setup(opts)
   local variant = opts.variant or "default"
   local transparent = opts.transparent or false
   local pop = opts.pop or false
+  local inverse_popup = opts.inverse_popup or false
   local p = {}
 
   if mode == "dark" then
@@ -117,7 +118,15 @@ function achroma.setup(opts)
   h.TabLineFill = { bg = p.bg }
   h.Title = { fg = p.syntax2, bold = true }
   h.Pmenu = { fg = p.fg, bg = p.bg_popup }
-  h.PmenuSel = { fg = p.bg, bg = p.fg }
+  if inverse_popup then
+    if mode == "dark" then
+      h.PmenuSel = { fg = grays.black, bg = grays.gray11 }
+    else
+      h.PmenuSel = { fg = grays.gray12, bg = grays.black }
+    end
+  else
+    h.PmenuSel = { fg = p.bg, bg = p.fg }
+  end
   h.PmenuSbar = { bg = p.bg_highlight }
   h.PmenuThumb = { bg = p.fg_gutter }
   h.WildMenu = { fg = p.fg, bg = p.bg_highlight }
@@ -438,7 +447,15 @@ function achroma.setup(opts)
   -- Blink.cmp
   h.BlinkCmpMenu = { fg = p.fg, bg = p.bg_popup }
   h.BlinkCmpMenuBorder = { fg = p.border, bg = p.bg_popup }
-  h.BlinkCmpMenuSelection = { fg = p.fg, bg = p.bg_highlight }
+  if inverse_popup then
+    if mode == "dark" then
+      h.BlinkCmpMenuSelection = { fg = grays.black, bg = grays.gray11 }
+    else
+      h.BlinkCmpMenuSelection = { fg = grays.gray12, bg = grays.black }
+    end
+  else
+    h.BlinkCmpMenuSelection = { fg = p.fg, bg = p.bg_highlight }
+  end
   h.BlinkCmpLabel = { fg = p.fg }
   h.BlinkCmpLabelDeprecated = { fg = p.comment, strikethrough = true }
   h.BlinkCmpLabelMatch = { fg = p.syntax3, bold = true }
