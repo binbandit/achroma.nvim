@@ -17,11 +17,22 @@ local grays = {
   gray12 = "#f4f4f4",
 }
 
+-- Secret pop mode colors - subtle and sophisticated
+local pop_colors = {
+  purple = "#9d7cd8",      -- Rich purple for special elements
+  red = "#f7768e",         -- Soft red for errors
+  yellow = "#e0af68",      -- Warm yellow for warnings
+  green = "#9ece6a",       -- Soft green for success/info
+  blue = "#7aa2f7",        -- Calm blue for hints
+  cyan = "#7dcfff",        -- Bright cyan for special highlights
+}
+
 function achroma.setup(opts)
   opts = opts or {}
   local mode = opts.mode or "dark"
   local variant = opts.variant or "default"
   local transparent = opts.transparent or false
+  local pop = opts.pop or false
   local p = {}
 
   if mode == "dark" then
@@ -34,13 +45,13 @@ function achroma.setup(opts)
     p.fg_gutter = grays.gray6
     p.border = grays.gray3
     p.comment = grays.gray7
-    p.syntax1 = grays.gray10 -- e.g., strings, numbers
-    p.syntax2 = grays.gray12 -- e.g., keywords
-    p.syntax3 = grays.gray8 -- e.g., functions
-    p.error = grays.gray7
-    p.warning = grays.gray8
-    p.info = grays.gray9
-    p.hint = grays.gray10
+    p.syntax1 = pop and pop_colors.green or grays.gray10 -- e.g., strings, numbers
+    p.syntax2 = pop and pop_colors.purple or grays.gray12 -- e.g., keywords
+    p.syntax3 = pop and pop_colors.blue or grays.gray8 -- e.g., functions
+    p.error = pop and pop_colors.red or grays.gray7
+    p.warning = pop and pop_colors.yellow or grays.gray8
+    p.info = pop and pop_colors.green or grays.gray9
+    p.hint = pop and pop_colors.cyan or grays.gray10
     p.none = "NONE"
   elseif mode == "light" then
     p.bg = grays.gray12
@@ -52,13 +63,13 @@ function achroma.setup(opts)
     p.fg_gutter = grays.gray6
     p.border = grays.gray9
     p.comment = grays.gray5
-    p.syntax1 = grays.gray4 -- e.g., strings, numbers
-    p.syntax2 = grays.gray0 -- e.g., keywords
-    p.syntax3 = grays.gray2 -- e.g., functions
-    p.error = grays.gray5
-    p.warning = grays.gray5
-    p.info = grays.gray4
-    p.hint = grays.gray3
+    p.syntax1 = pop and pop_colors.green or grays.gray4 -- e.g., strings, numbers
+    p.syntax2 = pop and pop_colors.purple or grays.gray0 -- e.g., keywords
+    p.syntax3 = pop and pop_colors.blue or grays.gray2 -- e.g., functions
+    p.error = pop and pop_colors.red or grays.gray5
+    p.warning = pop and pop_colors.yellow or grays.gray5
+    p.info = pop and pop_colors.green or grays.gray4
+    p.hint = pop and pop_colors.cyan or grays.gray3
     p.none = "NONE"
   end
 
@@ -89,9 +100,9 @@ function achroma.setup(opts)
   h.MoreMsg = { fg = p.syntax1, bold = true }
   h.NonText = { fg = p.fg_gutter }
   h.Question = { fg = p.warning }
-  h.Search = { fg = p.bg, bg = p.syntax3 }
-  h.IncSearch = { fg = p.bg, bg = p.syntax2, bold = true }
-  h.Substitute = { fg = p.bg, bg = p.syntax2, bold = true }
+  h.Search = { fg = p.bg, bg = pop and pop_colors.purple or p.syntax3 }
+  h.IncSearch = { fg = p.bg, bg = pop and pop_colors.cyan or p.syntax2, bold = true }
+  h.Substitute = { fg = p.bg, bg = pop and pop_colors.cyan or p.syntax2, bold = true }
   h.SpecialKey = { fg = p.syntax2 }
   h.EndOfBuffer = { fg = p.bg }
   h.Visual = { fg = p.fg, bg = p.border }
@@ -678,6 +689,7 @@ function achroma.setup(opts)
   end
   vim.g.colors_name = "achroma"
   vim.g.achroma_variant = variant
+  vim.g.achroma_pop = pop
 
   for group, settings in pairs(h) do
     vim.api.nvim_set_hl(0, group, settings)

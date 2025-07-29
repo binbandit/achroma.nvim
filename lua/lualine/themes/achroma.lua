@@ -17,11 +17,21 @@ local colors = {
   gray12 = "#f4f4f4",
 }
 
+local pop_colors = {
+  purple = "#9d7cd8",
+  red = "#f7768e",
+  yellow = "#e0af68",
+  green = "#9ece6a",
+  blue = "#7aa2f7",
+  cyan = "#7dcfff",
+}
+
 local achroma = {}
 
 -- Determine colors based on background and variant
 local bg = vim.o.background
 local variant = vim.g.achroma_variant or "default"
+local pop = vim.g.achroma_pop or false
 local c = {}
 
 if bg == "dark" then
@@ -30,20 +40,20 @@ if bg == "dark" then
   c.bg_statusline = variant == "black" and colors.gray1 or colors.gray2
   c.fg = colors.gray11
   c.fg_dark = colors.gray9
-  c.syntax1 = colors.gray10
-  c.syntax2 = colors.gray12
-  c.syntax3 = colors.gray8
-  c.error = colors.gray7
+  c.syntax1 = pop and pop_colors.green or colors.gray10
+  c.syntax2 = pop and pop_colors.purple or colors.gray12
+  c.syntax3 = pop and pop_colors.blue or colors.gray8
+  c.error = pop and pop_colors.red or colors.gray7
 else
   c.bg = colors.gray12
   c.bg_highlight = colors.gray11
   c.bg_statusline = colors.gray11
   c.fg = colors.gray1
   c.fg_dark = colors.gray3
-  c.syntax1 = colors.gray4
-  c.syntax2 = colors.gray0
-  c.syntax3 = colors.gray2
-  c.error = colors.gray5
+  c.syntax1 = pop and pop_colors.green or colors.gray4
+  c.syntax2 = pop and pop_colors.purple or colors.gray0
+  c.syntax3 = pop and pop_colors.blue or colors.gray2
+  c.error = pop and pop_colors.red or colors.gray5
 end
 
 achroma.normal = {

@@ -6,7 +6,8 @@ vim.api.nvim_create_user_command('Achroma', function(opts)
   local options = {
     mode = vim.o.background,
     variant = 'default',
-    transparent = false
+    transparent = false,
+    pop = false
   }
   
   -- Parse arguments
@@ -17,6 +18,8 @@ vim.api.nvim_create_user_command('Achroma', function(opts)
       options.variant = arg
     elseif arg == 'transparent' then
       options.transparent = true
+    elseif arg == 'pop' then
+      options.pop = true
     end
   end
   
