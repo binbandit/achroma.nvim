@@ -1,0 +1,41 @@
+# Ghostty theme configuration for Achroma
+# Place this file in ~/.config/ghostty/themes/
+
+# Dark variant
+background = 1e1e1e
+foreground = e0e0e0
+cursor-color = e0e0e0
+selection-background = 3c3c3c
+selection-foreground = e0e0e0
+
+# Black colors
+palette = 0=#1e1e1e
+palette = 8=#505050
+
+# Red colors  
+palette = 1=#8f8f8f
+palette = 9=#8f8f8f
+
+# Green colors
+palette = 2=#cccccc
+palette = 10=#b8b8b8
+
+# Yellow colors
+palette = 3=#a4a4a4
+palette = 11=#a4a4a4
+
+# Blue colors
+palette = 4=#808080
+palette = 12=#808080
+
+# Magenta colors
+palette = 5=#f4f4f4
+palette = 13=#f4f4f4
+
+# Cyan colors
+palette = 6=#989898
+palette = 14=#989898
+
+# White colors
+palette = 7=#e0e0e0
+palette = 15=#e0e0e0

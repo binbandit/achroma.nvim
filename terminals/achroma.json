@@ -1,0 +1,23 @@
+{
+  "name": "Achroma Dark",
+  "cursorColor": "#E0E0E0",
+  "selectionBackground": "#3C3C3C",
+  "background": "#1E1E1E",
+  "foreground": "#E0E0E0",
+  "black": "#1E1E1E",
+  "blue": "#808080",
+  "brightBlack": "#505050",
+  "brightBlue": "#808080",
+  "brightCyan": "#989898",
+  "brightGreen": "#B8B8B8",
+  "brightPurple": "#F4F4F4",
+  "brightRed": "#8F8F8F",
+  "brightWhite": "#E0E0E0",
+  "brightYellow": "#A4A4A4",
+  "cyan": "#989898",
+  "green": "#CCCCCC",
+  "purple": "#F4F4F4",
+  "red": "#8F8F8F",
+  "white": "#E0E0E0",
+  "yellow": "#A4A4A4"
+}

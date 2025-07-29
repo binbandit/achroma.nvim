@@ -1,0 +1,70 @@
+# Alacritty theme configuration for Achroma
+# Add this to your alacritty.toml configuration
+
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#e0e0e0"
+
+[colors.cursor]
+text = "#1e1e1e"
+cursor = "#e0e0e0"
+
+[colors.selection]
+text = "#e0e0e0"
+background = "#3c3c3c"
+
+[colors.normal]
+black = "#1e1e1e"
+red = "#8f8f8f"
+green = "#cccccc"
+yellow = "#a4a4a4"
+blue = "#808080"
+magenta = "#f4f4f4"
+cyan = "#989898"
+white = "#e0e0e0"
+
+[colors.bright]
+black = "#505050"
+red = "#8f8f8f"
+green = "#b8b8b8"
+yellow = "#a4a4a4"
+blue = "#808080"
+magenta = "#f4f4f4"
+cyan = "#989898"
+white = "#e0e0e0"
+
+# For pure black variant, replace primary background with:
+# background = "#000000"
+
+# For light variant:
+# [colors.primary]
+# background = "#f4f4f4"
+# foreground = "#1e1e1e"
+#
+# [colors.cursor]
+# text = "#f4f4f4"
+# cursor = "#1e1e1e"
+#
+# [colors.selection]
+# text = "#1e1e1e"
+# background = "#cccccc"
+#
+# [colors.normal]
+# black = "#f4f4f4"
+# red = "#656565"
+# green = "#505050"
+# yellow = "#656565"
+# blue = "#282828"
+# magenta = "#0d0d0d"
+# cyan = "#3c3c3c"
+# white = "#1e1e1e"
+#
+# [colors.bright]
+# black = "#cccccc"
+# red = "#656565"
+# green = "#3c3c3c"
+# yellow = "#656565"
+# blue = "#282828"
+# magenta = "#0d0d0d"
+# cyan = "#3c3c3c"
+# white = "#1e1e1e"

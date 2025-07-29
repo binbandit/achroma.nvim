@@ -1,0 +1,23 @@
+{
+  "name": "Achroma Light",
+  "cursorColor": "#1E1E1E",
+  "selectionBackground": "#CCCCCC",
+  "background": "#F4F4F4",
+  "foreground": "#1E1E1E",
+  "black": "#F4F4F4",
+  "blue": "#282828",
+  "brightBlack": "#CCCCCC",
+  "brightBlue": "#282828",
+  "brightCyan": "#3C3C3C",
+  "brightGreen": "#3C3C3C",
+  "brightPurple": "#0D0D0D",
+  "brightRed": "#656565",
+  "brightWhite": "#1E1E1E",
+  "brightYellow": "#656565",
+  "cyan": "#3C3C3C",
+  "green": "#505050",
+  "purple": "#0D0D0D",
+  "red": "#656565",
+  "white": "#1E1E1E",
+  "yellow": "#656565"
+}
