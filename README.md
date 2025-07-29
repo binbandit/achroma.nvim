@@ -40,11 +40,12 @@ colorscheme achroma
 Or with Lua configuration:
 ```lua
 require('achroma').setup({
-  mode = 'dark',       -- 'dark' or 'light'
-  variant = 'default', -- 'default' or 'black' (dark mode only)
-  transparent = false, -- true for transparent background
-  pop = false,         -- true for subtle color accents
-  inverse_popup = false -- true for high contrast popup menus
+  mode = 'dark',         -- 'dark' or 'light'
+  variant = 'default',   -- 'default' or 'black' (dark mode only)
+  transparent = false,   -- true for transparent background
+  pop = false,           -- true for subtle color accents
+  inverse_popup = false, -- true for high contrast popup menus
+  auto_dark_light = false -- true to follow system dark/light mode
 })
 ```
 
@@ -63,16 +64,24 @@ require('achroma').setup({
 
 ```lua
 require('achroma').setup({
-  mode = 'dark',        -- 'dark' or 'light'
-  variant = 'black',    -- 'default' or 'black' (dark mode only)
-  transparent = false,  -- true for transparent background
-  inverse_popup = false -- true for high contrast popup menus
+  mode = 'dark',          -- 'dark' or 'light'
+  variant = 'black',      -- 'default' or 'black' (dark mode only)
+  transparent = false,    -- true for transparent background
+  inverse_popup = false,  -- true for high contrast popup menus
+  auto_dark_light = false -- true to follow system dark/light mode
 })
 ```
 
-The `inverse_popup` option provides high contrast selection in completion menus:
+#### Configuration Options
+
+**`inverse_popup`**: Provides high contrast selection in completion menus
 - **Dark mode**: White background with black text for selected items
 - **Light mode**: Black background with white text for selected items
+
+**`auto_dark_light`**: Automatically switches between dark and light modes
+- Follows Neovim's `background` option
+- Works with plugins that detect system theme (e.g., [auto-dark-mode.nvim](https://github.com/f-person/auto-dark-mode.nvim))
+- Preserves other settings when switching modes
 
 The theme respects your existing `background` setting:
 ```vim

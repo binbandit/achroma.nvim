@@ -29,11 +29,12 @@ local pop_colors = {
 
 function achroma.setup(opts)
   opts = opts or {}
-  local mode = opts.mode or "dark"
+  local mode = opts.mode or vim.o.background or "dark"
   local variant = opts.variant or "default"
   local transparent = opts.transparent or false
   local pop = opts.pop or false
   local inverse_popup = opts.inverse_popup or false
+  local auto_dark_light = opts.auto_dark_light or false
   local p = {}
 
   if mode == "dark" then
@@ -178,6 +179,10 @@ function achroma.setup(opts)
   -- Tree-sitter highlight groups
   h["@error"] = { fg = p.error }
   h["@comment"] = { link = "Comment" }
+  h["@comment.note"] = { link = "TodoSignNOTE" }
+  h["@comment.todo"] = { link = "TodoSignTODO" }
+  h["@comment.warning"] = { link = "TodoSignWARN" }
+  h["@comment.error"] = { link = "TodoSignERROR" }
   h["@punctuation.delimiter"] = { fg = p.fg_dark }
   h["@punctuation.bracket"] = { fg = p.fg_dark }
   h["@punctuation.special"] = { fg = p.syntax3 }
@@ -708,9 +713,34 @@ function achroma.setup(opts)
   vim.g.colors_name = "achroma"
   vim.g.achroma_variant = variant
   vim.g.achroma_pop = pop
+  vim.g.achroma_inverse_popup = inverse_popup
+  vim.g.achroma_auto_dark_light = auto_dark_light
 
   for group, settings in pairs(h) do
     vim.api.nvim_set_hl(0, group, settings)
+  end
+
+  -- Set up autocmd for dynamic theme switching
+  if auto_dark_light then
+    vim.api.nvim_create_augroup("AchromaAutoTheme", { clear = true })
+    vim.api.nvim_create_autocmd("OptionSet", {
+      group = "AchromaAutoTheme",
+      pattern = "background",
+      callback = function()
+        -- Preserve user options
+        local saved_opts = {
+          variant = vim.g.achroma_variant,
+          transparent = transparent,
+          pop = vim.g.achroma_pop,
+          inverse_popup = vim.g.achroma_inverse_popup,
+          auto_dark_light = true
+        }
+        -- Update mode based on new background
+        saved_opts.mode = vim.o.background
+        -- Reapply theme with new mode
+        achroma.setup(saved_opts)
+      end,
+    })
   end
 end
 
