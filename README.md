@@ -1,88 +1,67 @@
 # achroma.nvim
 
-A minimal grayscale colorscheme for Neovim that supports both light and dark modes.
+A minimalist grayscale colorscheme for Neovim with no color distractions.
 
-## Features
+## Overview
 
-- Pure grayscale palette with no color distractions
-- Support for dark and light modes
-- Pure black background variant for OLED displays
-- Full support for Tree-sitter highlighting
-- LSP diagnostics support
-- WCAG compliant color contrasts
-- Extensive plugin support:
-  - File explorers: NvimTree, NeoTree
-  - Completion: nvim-cmp, blink.cmp
-  - Search: Telescope
-  - Git: GitSigns, Diffview
-  - UI: Bufferline, lualine, Noice, Notify, WhichKey
-  - Utilities: Lazy, Mason, Trouble, TodoComments
-  - Navigation: Flash, Hop
-  - Start screens: Alpha, Dashboard
-  - Indentation: IndentBlankline
+Achroma is a purely grayscale theme designed for focused coding. It supports both light and dark modes, includes a pure black variant for OLED displays, and ensures all colors meet WCAG accessibility standards.
 
 ## Installation
 
-### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
-
+Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 ```lua
 {
   "binbandit/achroma.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    vim.cmd([[colorscheme achroma]])
+    vim.cmd.colorscheme "achroma"
   end,
 }
 ```
 
-### Using [packer.nvim](https://github.com/wbthomason/packer.nvim)
-
+Using [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
 use {
   "binbandit/achroma.nvim",
   config = function()
-    vim.cmd([[colorscheme achroma]])
+    vim.cmd.colorscheme "achroma"
   end
 }
 ```
 
 ## Usage
 
+Basic usage:
 ```vim
-" Set the colorscheme
 colorscheme achroma
+```
 
-" Or with a specific mode
-:Achroma dark
-:Achroma light
+### Commands
 
-" Use pure black background variant
-:Achroma black
-:Achroma dark black
-:Achroma light  " Light mode doesn't have black variant
+```vim
+:Achroma dark        " Dark mode
+:Achroma light       " Light mode
+:Achroma black       " Pure black background (dark mode)
+:Achroma dark black  " Explicit dark mode with black background
 ```
 
 ### Configuration
 
 ```lua
--- Set up with options
 require('achroma').setup({
   mode = 'dark',     -- 'dark' or 'light'
   variant = 'black'  -- 'default' or 'black' (dark mode only)
 })
 ```
 
-The theme automatically respects your `background` setting:
-
+The theme respects your existing `background` setting:
 ```vim
 set background=dark  " Use dark mode
 set background=light " Use light mode
 ```
 
-### Lualine Configuration
-
-To use the achroma theme with lualine:
+### Lualine Integration
 
 ```lua
 require('lualine').setup {
@@ -91,6 +70,38 @@ require('lualine').setup {
   }
 }
 ```
+
+## Features
+
+### Core
+- Pure grayscale palette - no color distractions
+- Dark and light mode support
+- Pure black variant for OLED displays
+- WCAG compliant contrast ratios
+- Full Tree-sitter support
+- LSP diagnostics styling
+
+### Plugin Support
+
+The theme includes highlight groups for:
+
+**File Management**: NvimTree, NeoTree  
+**Completion**: nvim-cmp, blink.cmp  
+**Search**: Telescope  
+**Git Integration**: GitSigns, Diffview  
+**UI Enhancement**: Bufferline, lualine, Noice, Notify, WhichKey  
+**Development Tools**: Lazy, Mason, Trouble, TodoComments  
+**Navigation**: Flash, Hop  
+**Startup**: Alpha, Dashboard  
+**Indentation**: IndentBlankline
+
+## Philosophy
+
+Achroma removes color as a distraction, using only shades of gray to create visual hierarchy. This approach reduces cognitive load and helps maintain focus on the code structure rather than syntax highlighting.
+
+## Contributing
+
+Issues and pull requests are welcome. When contributing, please ensure all color combinations maintain WCAG AA compliance for accessibility.
 
 ## License
 
